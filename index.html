@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prosta Strona</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script> <!-- Dodanie pliku JavaScript -->
 </head>
 <body>
     <header>
@@ -17,6 +18,16 @@
             </ul>
         </nav>
     </header>
+    
+    <!-- Panel zmiany czcionki i kontrastu -->
+    <div class="settings-panel">
+        <label for="font-size">Wielkość czcionki:</label>
+        <input type="range" id="font-size" min="12" max="30" value="16">
+        
+        <label for="contrast">Kontrast:</label>
+        <input type="checkbox" id="contrast">
+    </div>
+    
     <section id="home">
         <h2>Strona Główna</h2>
         <p>To jest przykładowa strona internetowa z prostym HTML i CSS.</p>
@@ -27,7 +38,7 @@
     </section>
     <section id="contact">
         <h2>Kontakt</h2>
-        <p>Możesz skontaktować się ze mną poprzez e-mail: <a href="mailto:ozofe25.gmail.com">mail</a></p>
+        <p>Możesz skontaktować się ze mną poprzez e-mail: <a href="mailto:ozofe25@gmail.com">mail</a></p>
     </section>
     <footer>
         <p>&copy; 2025 Moja Strona</p>
