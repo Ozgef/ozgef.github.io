@@ -11,6 +11,7 @@ body {
     background-color: #f0f0f0;
     color: #333;
     line-height: 1.6;
+    font-size: 16px; /* Domyślna wielkość czcionki */
 }
 
 /* Nagłówek */
@@ -72,3 +73,25 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* Panel ustawień */
+.settings-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.settings-panel label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.settings-panel input {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
