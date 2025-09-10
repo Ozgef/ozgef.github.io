@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przykłady JavaScript</title>
+</head>
+<body>
+    <header>
+        <h1>Przykłady JavaScript</h1>
+    </header>
+    
+    <section>
+        <h2>1. console.log()</h2>
+        <p>Spójrz w konsolę przeglądarki, aby zobaczyć wynik `console.log()`.</p>
+    </section>
+
+    <section>
+        <h2>2. document.write()</h2>
+        <p>Po załadowaniu strony na stronie pojawi się tekst dzięki `document.write()`.</p>
+    </section>
+
+    <section>
+        <h2>3. window.alert()</h2>
+        <p>Po załadowaniu strony zobaczysz okienko alertu dzięki `window.alert()`.</p>
+    </section>
+
+    <section>
+        <h2>4. innerHTML</h2>
+        <p id="innerHTMLExample">Kliknij przycisk poniżej, aby zmienić zawartość tego paragrafu przy użyciu `innerHTML`.</p>
+        <button onclick="changeContentWithInnerHTML()">Zmień zawartość (innerHTML)</button>
+    </section>
+
+    <section>
+        <h2>5. innerText</h2>
+        <p id="innerTextExample">Kliknij przycisk poniżej, aby zmienić tekst tego paragrafu przy użyciu `innerText`.</p>
+        <button onclick="changeContentWithInnerText()">Zmień tekst (innerText)</button>
+    </section>
+
+    <script>
+        // 1. console.log() - Wypisanie wiadomości w konsoli
+        console.log("To jest przykład użycia console.log()!");
+
+        // 2. document.write() - Wypisanie tekstu bezpośrednio na stronie
+        document.write("<h3>Witaj! To jest wynik użycia document.write() na stronie!</h3>");
+
+        // 3. window.alert() - Okienko alertu na stronie
+        window.alert("To jest alert! Okienko pojawi się przy załadowaniu strony.");
+
+        // 4. innerHTML - Zmiana zawartości HTML elementu
+        function changeContentWithInnerHTML() {
+            const paragraph = document.getElementById("innerHTMLExample");
+            paragraph.innerHTML = "Zawartość została zmieniona za pomocą <strong>innerHTML</strong>!";
+        }
+
+        // 5. innerText - Zmiana tekstu w elemencie
+        function changeContentWithInnerText() {
+            const paragraph = document.getElementById("innerTextExample");
+            paragraph.innerText = "Tekst został zmieniony za pomocą <strong>innerText</strong>!";
+        }
+    </script>
+</body>
+</html>
