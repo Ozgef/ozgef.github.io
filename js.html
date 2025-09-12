@@ -4,6 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Przykłady JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 700px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,48 +57,51 @@
     
     <section>
         <h2>1. console.log()</h2>
-        <p>Spójrz w konsolę przeglądarki, aby zobaczyć wynik `console.log()`.</p>
+        <p>Spójrz w konsolę przeglądarki, aby zobaczyć wynik <code>console.log()</code>.</p>
     </section>
 
     <section>
         <h2>2. document.write()</h2>
-        <p>Po załadowaniu strony na stronie pojawi się tekst dzięki `document.write()`.</p>
+        <p>Po załadowaniu strony na stronie pojawi się tekst dzięki <code>document.write()</code>.</p>
     </section>
 
     <section>
         <h2>3. window.alert()</h2>
-        <p>Po załadowaniu strony zobaczysz okienko alertu dzięki `window.alert()`.</p>
+        <p>Kliknij przycisk, aby zobaczyć okienko alertu z <code>window.alert()</code>.</p>
+        <button onclick="showAlert()">Pokaż alert</button>
     </section>
 
     <section>
         <h2>4. innerHTML</h2>
-        <p id="innerHTMLExample">Kliknij przycisk poniżej, aby zmienić zawartość tego paragrafu przy użyciu `innerHTML`.</p>
+        <p id="innerHTMLExample">Kliknij przycisk poniżej, aby zmienić zawartość tego paragrafu przy użyciu <code>innerHTML</code>.</p>
         <button onclick="changeContentWithInnerHTML()">Zmień zawartość (innerHTML)</button>
     </section>
 
     <section>
         <h2>5. innerText</h2>
-        <p id="innerTextExample">Kliknij przycisk poniżej, aby zmienić tekst tego paragrafu przy użyciu `innerText`.</p>
+        <p id="innerTextExample">Kliknij przycisk poniżej, aby zmienić tekst tego paragrafu przy użyciu <code>innerText</code>.</p>
         <button onclick="changeContentWithInnerText()">Zmień tekst (innerText)</button>
     </section>
 
     <script>
-        // 1. console.log() - Wypisanie wiadomości w konsoli
+        // 1. console.log()
         console.log("To jest przykład użycia console.log()!");
 
-        // 2. document.write() - Wypisanie tekstu bezpośrednio na stronie
-        document.write("<h3>Witaj! To jest wynik użycia document.write() na stronie!</h3>");
+        // 2. document.write()
+        document.write("<h3 style='text-align:center; color: #4CAF50;'>Witaj! To jest wynik użycia document.write() na stronie!</h3>");
 
-        // 3. window.alert() - Okienko alertu na stronie
-        window.alert("To jest alert! Okienko pojawi się przy załadowaniu strony.");
+        // 3. window.alert() przez przycisk
+        function showAlert() {
+            alert("To jest alert! Został wywołany po kliknięciu przycisku.");
+        }
 
-        // 4. innerHTML - Zmiana zawartości HTML elementu
+        // 4. innerHTML
         function changeContentWithInnerHTML() {
             const paragraph = document.getElementById("innerHTMLExample");
             paragraph.innerHTML = "Zawartość została zmieniona za pomocą <strong>innerHTML</strong>!";
         }
 
-        // 5. innerText - Zmiana tekstu w elemencie
+        // 5. innerText
         function changeContentWithInnerText() {
             const paragraph = document.getElementById("innerTextExample");
             paragraph.innerText = "Tekst został zmieniony za pomocą <strong>innerText</strong>!";
@@ -61,3 +109,4 @@
     </script>
 </body>
 </html>
+
