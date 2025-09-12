@@ -83,6 +83,12 @@
         <button onclick="changeContentWithInnerText()">Zmień tekst (innerText)</button>
     </section>
 
+    <section>
+        <h2>6. confirm() i link do YouTube</h2>
+        <p>Kliknij przycisk, aby otworzyć stronę YouTube. Zostaniesz zapytany, czy na pewno chcesz to zrobić.</p>
+        <button onclick="confirmAndOpenYouTube()">Otwórz YouTube</button>
+    </section>
+
     <script>
         // 1. console.log()
         console.log("To jest przykład użycia console.log()!");
@@ -105,6 +111,16 @@
         function changeContentWithInnerText() {
             const paragraph = document.getElementById("innerTextExample");
             paragraph.innerText = "Tekst został zmieniony za pomocą <strong>innerText</strong>!";
+        }
+
+        // 6. confirm() i przekierowanie do YouTube
+        function confirmAndOpenYouTube() {
+            const userConfirmed = confirm("Czy chcesz otworzyć stronę YouTube?");
+            if (userConfirmed) {
+                window.open("https://www.youtube.com", "_blank");
+            } else {
+                console.log("Użytkownik anulował otwarcie YouTube.");
+            }
         }
     </script>
 </body>
