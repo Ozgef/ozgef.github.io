@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zmienne i Konwersja Typów</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .output {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Zmienne, Konwersja Typów i Konkatenacja</h1>
+
+    <div class="container">
+        <h2>Przykład zmiennych</h2>
+        <p><strong>var:</strong> <span id="varOutput"></span></p>
+        <p><strong>let:</strong> <span id="letOutput"></span></p>
+        <p><strong>const:</strong> <span id="constOutput"></span></p>
+
+        <div class="code-block">
+            <pre>
+var zmiennaVar = "10";
+let zmiennaLet = "20";
+const zmiennaConst = "30";
+
+let liczbaVar = Number(zmiennaVar);
+let liczbaLet = Number(zmiennaLet);
+let liczbaConst = Number(zmiennaConst);
+
+document.getElementById('varOutput').innerText = "Var: " + (liczbaVar + 5);
+document.getElementById('letOutput').innerText = "Let: " + (liczbaLet + 5);
+document.getElementById('constOutput').innerText = "Const: " + (liczbaConst + 5);
+            </pre>
+        </div>
+
+        <button onclick="showResults()">Pokaż wyniki</button>
+
+        <div class="output">
+            <p>Wynik konkatenacji (po dodaniu 5 do każdej zmiennej):</p>
+            <p><strong id="varResult"></strong></p>
+            <p><strong id="letResult"></strong></p>
+            <p><strong id="constResult"></strong></p>
+        </div>
+    </div>
+
+    <script>
+        function showResults() {
+            // Deklarowanie zmiennych
+            var zmiennaVar = "10";
+            let zmiennaLet = "20";
+            const zmiennaConst = "30";
+
+            // Konwersja ciągów na liczby
+            let liczbaVar = Number(zmiennaVar);
+            let liczbaLet = Number(zmiennaLet);
+            let liczbaConst = Number(zmiennaConst);
+
+            // Wyniki z konkatenacją
+            document.getElementById('varResult').innerText = "Var: " + (liczbaVar + 5);
+            document.getElementById('letResult').innerText = "Let: " + (liczbaLet + 5);
+            document.getElementById('constResult').innerText = "Const: " + (liczbaConst + 5);
+        }
+    </script>
+
+</body>
+</html>
