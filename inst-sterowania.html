@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przykłady warunków i pętli w JavaScript</title>
+    <script>
+        // Zwykły if
+        function zwyklyIf() {
+            let x = 10;
+            if (x > 5) {
+                document.getElementById("wynikIf").innerHTML = "x jest większe niż 5";
+            }
+        }
+
+        // if bez {} (przykład z jednym blokiem kodu)
+        function ifBezKlamer() {
+            let x = 10;
+            if (x > 5) document.getElementById("wynikIfBezKlamer").innerHTML = "x jest większe niż 5";
+        }
+
+        // Operator warunkowy (ternary)
+        function ternaryOperator() {
+            let x = 10;
+            document.getElementById("wynikTernary").innerHTML = (x > 5) ? "x jest większe niż 5" : "x jest mniejsze lub równe 5";
+        }
+
+        // Switch
+        function switchExample() {
+            let day = 3;
+            switch (day) {
+                case 1:
+                    document.getElementById("wynikSwitch").innerHTML = "Poniedziałek";
+                    break;
+                case 2:
+                    document.getElementById("wynikSwitch").innerHTML = "Wtorek";
+                    break;
+                case 3:
+                    document.getElementById("wynikSwitch").innerHTML = "Środa";
+                    break;
+                default:
+                    document.getElementById("wynikSwitch").innerHTML = "Inny dzień";
+            }
+        }
+
+        // Pętla for
+        function forLoop() {
+            let result = "";
+            for (let i = 0; i < 5; i++) {
+                result += "Liczba: " + i + "<br>";
+            }
+            document.getElementById("wynikFor").innerHTML = result;
+        }
+
+        // Pętla while
+        function whileLoop() {
+            let i = 0;
+            let result = "";
+            while (i < 5) {
+                result += "Liczba: " + i + "<br>";
+                i++;
+            }
+            document.getElementById("wynikWhile").innerHTML = result;
+        }
+
+        // Pętla do while
+        function doWhileLoop() {
+            let i = 0;
+            let result = "";
+            do {
+                result += "Liczba: " + i + "<br>";
+                i++;
+            } while (i < 5);
+            document.getElementById("wynikDoWhile").innerHTML = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Przykłady w JavaScript</h1>
+    <button onclick="zwyklyIf()">Zwykły if</button>
+    <p id="wynikIf"></p>
+
+    <button onclick="ifBezKlamer()">if bez klamer</button>
+    <p id="wynikIfBezKlamer"></p>
+
+    <button onclick="ternaryOperator()">Ternary (operatory warunkowe)</button>
+    <p id="wynikTernary"></p>
+
+    <button onclick="switchExample()">Switch</button>
+    <p id="wynikSwitch"></p>
+
+    <button onclick="forLoop()">Pętla for</button>
+    <p id="wynikFor"></p>
+
+    <button onclick="whileLoop()">Pętla while</button>
+    <p id="wynikWhile"></p>
+
+    <button onclick="doWhileLoop()">Pętla do while</button>
+    <p id="wynikDoWhile"></p>
+</body>
+</html>
