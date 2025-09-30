@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Przykład parseInt, isNaN, Number, parseFloat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f5f5f5;
+      border-radius: 8px;
+    }
+    input, button {
+      padding: 8px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Przykład parseInt(), isNaN(), Number(), parseFloat()</h1>
+  <p>Wpisz dowolny tekst lub liczbę:</p>
+  <input type="text" id="inputValue" placeholder="Np. 123abc, 12.34, abc, 56.78xyz" />
+  <button onclick="showResults()">Sprawdź</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function showResults() {
+      const val = document.getElementById('inputValue').value;
+
+      // parseInt - konwertuje na liczbę całkowitą, bierze liczby od początku ciągu
+      const parsedInt = parseInt(val);
+
+      // parseFloat - konwertuje na liczbę zmiennoprzecinkową
+      const parsedFloat = parseFloat(val);
+
+      // Number - próbuje zamienić całą wartość na liczbę
+      const numberVal = Number(val);
+
+      // isNaN - sprawdza czy coś NIE jest liczbą (NaN)
+      const isValNaN = isNaN(val);
+      const isParsedIntNaN = isNaN(parsedInt);
+      const isParsedFloatNaN = isNaN(parsedFloat);
+      const isNumberValNaN = isNaN(numberVal);
+
+      let output = `
+Wartość wejściowa: "${val}"
+
+parseInt(val): ${parsedInt} (isNaN? ${isParsedIntNaN})
+parseFloat(val): ${parsedFloat} (isNaN? ${isParsedFloatNaN})
+Number(val): ${numberVal} (isNaN? ${isNumberValNaN})
+
+isNaN(val) = ${isValNaN}
+`;
+
+      document.getElementById('result').textContent = output;
+    }
+  </script>
+</body>
+</html>
