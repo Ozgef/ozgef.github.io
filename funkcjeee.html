@@ -36,23 +36,36 @@
   <div class="result" id="result"></div>
 
   <script>
+    // ✅ Funkcja własna (deklaracja klasyczna)
+    function printTextClassic(text) {
+      console.log("Funkcja klasyczna: " + text);
+    }
+
+    // ✅ Funkcja własna (funkcja anonimowa przypisana do stałej)
+    const printTextConst = function(text) {
+      console.log("Funkcja jako const: " + text);
+    };
+
     function showResults() {
       const val = document.getElementById('inputValue').value;
 
-      // parseInt - konwertuje na liczbę całkowitą, bierze liczby od początku ciągu
+      // parseInt - konwertuje na liczbę całkowitą
       const parsedInt = parseInt(val);
 
-      // parseFloat - konwertuje na liczbę zmiennoprzecinkową
+      // parseFloat - liczba zmiennoprzecinkowa
       const parsedFloat = parseFloat(val);
 
-      // Number - próbuje zamienić całą wartość na liczbę
+      // Number - konwersja całej wartości
       const numberVal = Number(val);
 
-      // isNaN - sprawdza czy coś NIE jest liczbą (NaN)
+      // isNaN - sprawdza czy wartość NIE jest liczbą
       const isValNaN = isNaN(val);
       const isParsedIntNaN = isNaN(parsedInt);
       const isParsedFloatNaN = isNaN(parsedFloat);
       const isNumberValNaN = isNaN(numberVal);
+
+      // Przykład użycia funkcji wbudowanej
+      const sqrtValue = Math.sqrt(parsedFloat);
 
       let output = `
 Wartość wejściowa: "${val}"
@@ -62,20 +75,27 @@ parseFloat(val): ${parsedFloat} (isNaN? ${isParsedFloatNaN})
 Number(val): ${numberVal} (isNaN? ${isNumberValNaN})
 
 isNaN(val) = ${isValNaN}
+
+Przykład funkcji wbudowanej: Math.sqrt(${parsedFloat}) = ${isNaN(sqrtValue) ? "Błąd (NaN)" : sqrtValue}
 `;
 
       document.getElementById('result').textContent = output;
+
+      // Wywołanie obu funkcji własnych
+      printTextClassic("To jest funkcja klasyczna.");
+      printTextConst("To jest funkcja przypisana do stałej.");
     }
   </script>
-  <P>
-    funkcja to grupa instrukcji służących do wykonania określonych, powtarzających się zdań.<br>
-    definicja funkcji musi zawierac:<br>
+
+  <p>
+    Funkcja to grupa instrukcji służących do wykonania określonych, powtarzających się zadań.<br>
+    Definicja funkcji musi zawierać:
     <ul>
-      <li>słowo kluczowe function;</li>
-      <li>listę argumentów w nawiasach okrągłych i rozdzielonych przecinkami lub puste nawiasy okrągłe</li>
-      <li>implementacje</li>
+      <li>słowo kluczowe <code>function</code> lub przypisanie funkcji do zmiennej</li>
+      <li>listę argumentów w nawiasach okrągłych</li>
+      <li>ciało funkcji w nawiasach klamrowych</li>
     </ul>
-  </P>
+  </p>
 </body>
 </html>
 
