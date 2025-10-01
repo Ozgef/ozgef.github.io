@@ -25,6 +25,25 @@
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
       white-space: pre-wrap;
     }
+    /* Style dla małych okienek z opisami */
+    .function-box {
+      background: #fff;
+      padding: 12px 15px;
+      margin-top: 15px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .function-box h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: #2a5d9f;
+    }
+    .function-box p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -34,6 +53,32 @@
   <button onclick="showResults()">Sprawdź</button>
 
   <div class="result" id="result"></div>
+
+  <!-- Sekcja z małymi okienkami opisującymi funkcje -->
+  <div class="function-box">
+    <h3>parseInt()</h3>
+    <p>Konwertuje ciąg znaków na liczbę całkowitą, odczytując znaki od początku aż do pierwszego znaku, którego nie da się zinterpretować jako cyfrę.</p>
+  </div>
+
+  <div class="function-box">
+    <h3>parseFloat()</h3>
+    <p>Konwertuje ciąg znaków na liczbę zmiennoprzecinkową, odczytując znaki od początku aż do pierwszego znaku, którego nie da się zinterpretować jako część liczby.</p>
+  </div>
+
+  <div class="function-box">
+    <h3>Number()</h3>
+    <p>Konwertuje cały ciąg znaków na liczbę. Jeśli ciąg nie jest poprawnym zapisem liczby, zwraca NaN.</p>
+  </div>
+
+  <div class="function-box">
+    <h3>isNaN()</h3>
+    <p>Sprawdza, czy podana wartość jest „Not-a-Number” (Nie liczbą). Zwraca true jeśli wartość nie jest liczbą.</p>
+  </div>
+
+  <div class="function-box">
+    <h3>Math.sqrt()</h3>
+    <p>Oblicza pierwiastek kwadratowy z liczby. Jeśli argument jest ujemny lub nie jest liczbą, zwraca NaN.</p>
+  </div>
 
   <script>
     // ✅ Funkcja własna (deklaracja klasyczna)
@@ -98,4 +143,3 @@ Przykład funkcji wbudowanej: Math.sqrt(${parsedFloat}) = ${isNaN(sqrtValue) ? "
   </p>
 </body>
 </html>
-
