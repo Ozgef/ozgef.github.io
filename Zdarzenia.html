@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<title>Demo zdarzeń JavaScript z opisem i panelem</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px 20px 80px 20px; /* zostaw miejsce na panel na dole */
+  }
+  section {
+    border: 1px solid #ccc;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+  h2 {
+    margin-top: 0;
+  }
+  #log {
+    border: 1px solid #aaa;
+    padding: 10px;
+    max-height: 180px;
+    overflow-y: auto;
+    background: #f9f9f9;
+  }
+  small {
+    color: #555;
+    display: block;
+    margin-bottom: 8px;
+  }
+  button, input, form, textarea {
+    margin-top: 6px;
+  }
+  /* Panel na dole */
+  #event-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #222;
+    color: #fff;
+    font-weight: bold;
+    padding: 15px 20px;
+    font-size: 16px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+  }
+  #event-panel.active {
+    background-color: #0066cc;
+  }
+</style>
+<script>
+  function logEvent(eventName) {
+    const log = document.getElementById("log");
+    const panel = document.getElementById("event-panel");
+    const p = document.createElement("p");
+    p.textContent = `Event "${eventName}" został wywołany`;
+    log.appendChild(p);
+    log.scrollTop = log.scrollHeight; // przewiń do dołu
+
+    // pokaż w panelu
+    panel.textContent = `Ostatni event: "${eventName}"`;
+
+    // efekt "aktywności" - zmiana koloru na chwilę
+    panel.classList.add("active");
+    clearTimeout(panel._timeout);
+    panel._timeout = setTimeout(() => {
+      panel.classList.remove("active");
+    }, 1500);
+  }
+
+  function onSubmitHandler(e) {
+    e.preventDefault();
+    logEvent("onSubmit");
+  }
+
+  function onLoadHandler() {
+    logEvent("onLoad");
+  }
+
+  function onUnloadHandler() {
+    alert("Strona jest zamykana (onUnload)");
+  }
+
+  function onErrorHandler() {
+    logEvent("onError");
+  }
+
+  function onAbortHandler() {
+    logEvent("onAbort");
+  }
+</script>
+</head>
+<body
+  onload="onLoadHandler()"
+  onunload="onUnloadHandler()"
+  onerror="onErrorHandler()"
+>
+
+<h1>Demo zdarzeń JavaScript z opisem i panelem</h1>
+
+<section>
+  <h2>onLoad</h2>
+  <small>Wywoływane po pełnym załadowaniu strony</small>
+</section>
+
+<section>
+  <h2>onUnload</h2>
+  <small>Wywoływane gdy użytkownik opuszcza stronę (np. zamyka kartę)</small>
+</section>
+
+<section>
+  <h2>onError</h2>
+  <small>Wywoływane w przypadku błędu ładowania zasobu lub skryptu</small>
+</section>
+
+<section>
+  <h2>onAbort</h2>
+  <small>Wywoływane, gdy ładowanie zasobu zostanie przerwane</small>
+  <img
+    src="cos"
+    alt="Test obrazka"
+    onabort="onAbortHandler()"
+    onerror="onErrorHandler()"
+    style="display:block; margin-top:8px;"
+    onload="logEvent('Obrazek załadowany (onLoad)')"
+  />
+  <p>Jeśli obrazek zostanie przerwany (np. przerwanie ładowania), zobaczysz event onAbort</p>
+</section>
+
+<section>
+  <h2>onMouseDown</h2>
+  <small>Wywoływane w momencie wciśnięcia przycisku myszy</small>
+  <button onmousedown="logEvent('onMouseDown')">Kliknij i przytrzymaj mysz</button>
+</section>
+
+<section>
+  <h2>onMouseOut</h2>
+  <small>Wywoływane gdy kursor myszy opuści dany element</small>
+  <button onmouseout="logEvent('onMouseOut')" style="margin-top:8px;">Najedź i wyjedź kursorem</button>
+</section>
+
+<section>
+  <h2>onClick</h2>
+  <small>Wywoływane po kliknięciu na element</small>
+  <button onclick="logEvent('onClick')" style="margin-top:8px;">Kliknij mnie</button>
+</section>
+
+<section>
+  <h2>onKeyPress</h2>
+  <small>Wywoływane przy naciśnięciu klawisza na klawiaturze (z znakami)</small>
+  <input type="text" onkeypress="logEvent('onKeyPress')" placeholder="Wpisz coś" />
+</section>
+
+<section>
+  <h2>onKeyUp</h2>
+  <small>Wywoływane po zwolnieniu klawisza na klawiaturze</small>
+  <input type="text" onkeyup="logEvent('onKeyUp')" placeholder="Wpisz coś" />
+</section>
+
+<section>
+  <h2>onFocus</h2>
+  <small>Wywoływane gdy element dostaje fokus (np. kliknięcie w input)</small>
+  <input type="text" onfocus="logEvent('onFocus')" placeholder="Kliknij mnie" />
+</section>
+
+<section>
+  <h2>onBlur</h2>
+  <small>Wywoływane gdy element traci fokus (np. kliknięcie gdzie indziej)</small>
+  <input type="text" onblur="logEvent('onBlur')" placeholder="Kliknij, potem kliknij gdzie indziej" />
+</section>
+
+<section>
+  <h2>onChange</h2>
+  <small>Wywoływane gdy wartość elementu zostaje zmieniona i fokus opuszczony</small>
+  <input type="text" onchange="logEvent('onChange')" placeholder="Wpisz i kliknij poza" />
+</section>
+
+<section>
+  <h2>onSelect</h2>
+  <small>Wywoływane gdy zaznaczysz tekst w polu input lub textarea</small>
+  <textarea onselect="logEvent('onSelect')" rows="3" placeholder="Zaznacz tekst tutaj"></textarea>
+</section>
+
+<section>
+  <h2>onSubmit</h2>
+  <small>Wywoływane przy wysłaniu formularza</small>
+  <form onsubmit="onSubmitHandler(event)">
+    <input type="text" placeholder="Wpisz coś" required />
+    <button type="submit">Wyślij</button>
+  </form>
+</section>
+
+<section>
+  <h2>Log zdarzeń</h2>
+  <div id="log"></div>
+</section>
+
+<!-- Panel na dole -->
+<div id="event-panel">Ostatni event: brak</div>
+
+</body>
+</html>
