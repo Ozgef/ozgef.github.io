@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Przykład Window, Location, Document</title>
+</head>
+<body>
+  <h1>Przykładowa strona</h1>
+  <button onclick="showAlert()">Pokaż alert</button>
+  <button onclick="askConfirm()">Potwierdź akcję</button>
+  <button onclick="openWindow()">Otwórz nowe okno</button>
+  <button onclick="closeWindow()">Zamknij okno</button>
+  <br><br>
+  <button onclick="showLocationHref()">Pokaż adres strony</button>
+  <button onclick="reloadPage()">Przeładuj stronę</button>
+  <br><br>
+  <div id="tekst">Tekst przed zmianą</div>
+  <button onclick="changeText()">Zmień tekst</button>
+  <button onclick="writeToDocument()">Wypisz do dokumentu</button>
+
+  <script>
+    // ----- window -----
+    function showAlert() {
+      window.alert("To jest alert z window.alert()");
+    }
+
+    function askConfirm() {
+      const result = window.confirm("Czy na pewno chcesz kontynuować?");
+      if (result) {
+        alert("Potwierdziłeś!");
+      } else {
+        alert("Anulowałeś!");
+      }
+    }
+
+    let newWindow;
+    function openWindow() {
+      newWindow = window.open("https://example.com", "_blank", "width=400,height=300");
+    }
+
+    function closeWindow() {
+      if (newWindow && !newWindow.closed) {
+        newWindow.close();
+      } else {
+        alert("Okno nie jest otwarte lub już zostało zamknięte.");
+      }
+    }
+
+    // ----- location -----
+    function showLocationHref() {
+      alert("Aktualny adres: " + window.location.href);
+    }
+
+    function reloadPage() {
+      window.location.reload();
+    }
+
+    // ----- document -----
+    function changeText() {
+      document.getElementById("tekst").innerText = "Tekst został zmieniony przez document.getElementById()";
+    }
+
+    function writeToDocument() {
+      document.write("<h2>Cały dokument został nadpisany przez document.write()</h2>");
+    }
+  </script>
+</body>
+</html>
