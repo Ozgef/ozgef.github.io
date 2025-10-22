@@ -2,21 +2,35 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Przykład Window, Location, Document</title>
+  <title>Początkowy tytuł</title>
+  <style>
+    body {
+      transition: background-color 0.3s ease;
+    }
+  </style>
 </head>
 <body>
-  <h1>Przykładowa strona</h1>
+  <h1 id="tekst">Tekst przed zmianą</h1>
+
+  <!-- window -->
   <button onclick="showAlert()">Pokaż alert</button>
   <button onclick="askConfirm()">Potwierdź akcję</button>
   <button onclick="openWindow()">Otwórz nowe okno</button>
   <button onclick="closeWindow()">Zamknij okno</button>
   <br><br>
-  <button onclick="showLocationHref()">Pokaż adres strony</button>
+
+  <!-- location -->
+  <button onclick="showLocationHref()">Pokaż adres strony (href)</button>
+  <button onclick="showReferrer()">Pokaż referrer</button>
   <button onclick="reloadPage()">Przeładuj stronę</button>
   <br><br>
-  <div id="tekst">Tekst przed zmianą</div>
+
+  <!-- document -->
   <button onclick="changeText()">Zmień tekst</button>
   <button onclick="writeToDocument()">Wypisz do dokumentu</button>
+  <button onclick="changeTitle()">Zmień tytuł strony</button>
+  <button onclick="clearContent()">Wyczyść zawartość strony</button>
+  <button onclick="changeBackgroundColor()">Zmień kolor tła</button>
 
   <script>
     // ----- window -----
@@ -26,11 +40,7 @@
 
     function askConfirm() {
       const result = window.confirm("Czy na pewno chcesz kontynuować?");
-      if (result) {
-        alert("Potwierdziłeś!");
-      } else {
-        alert("Anulowałeś!");
-      }
+      alert(result ? "Potwierdziłeś!" : "Anulowałeś!");
     }
 
     let newWindow;
@@ -48,21 +58,47 @@
 
     // ----- location -----
     function showLocationHref() {
-      alert("Aktualny adres: " + window.location.href);
+      alert("location.href:\n" + location.href);
+    }
+
+    function showReferrer() {
+      alert("location.referrer:\n" + document.referrer || "Brak strony odsyłającej.");
     }
 
     function reloadPage() {
-      window.location.reload();
+      location.reload();
     }
 
     // ----- document -----
     function changeText() {
-      document.getElementById("tekst").innerText = "Tekst został zmieniony przez document.getElementById()";
+      document.getElementById("tekst").innerText = "Zmieniony tekst przy użyciu getElementById()";
     }
 
     function writeToDocument() {
       document.write("<h2>Cały dokument został nadpisany przez document.write()</h2>");
     }
+
+    function changeTitle() {
+      const nowyTytul = prompt("Podaj nowy tytuł strony:");
+      if (nowyTytul) {
+        document.title = nowyTytul;
+        alert("Nowy tytuł strony to: " + document.title);
+      }
+    }
+
+    function clearContent() {
+      // document.clear() jest przestarzałe – więc używamy tego:
+      document.body.innerHTML = "";
+    }
+
+    function changeBackgroundColor() {
+      const kolor = prompt("Podaj kolor (np. 'lightblue', '#ff0000'):");
+      if (kolor) {
+        document.body.style.backgroundColor = kolor;
+      }
+    }
   </script>
 </body>
 </html>
+
+
