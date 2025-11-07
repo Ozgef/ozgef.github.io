@@ -1,46 +1,28 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tak</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script> <!-- Dodanie pliku JavaScript -->
+  <meta charset="UTF-8">
+  <title>Funkcja strzałkowa =></title>
 </head>
 <body>
-    <header>
-        <h1>strona od zawodowych</h1>
-    </header>
-    
-    <!-- Panel zmiany czcionki i kontrastu -->
-    <div class="settings-panel">
-        <label for="font-size">Wielkość czcionki:</label>
-        <input type="range" id="font-size" min="12" max="30" value="16">
-        
-        <label for="contrast">Kontrast:</label>
-        <input type="checkbox" id="contrast">
-    </div>
-    
-    <section id="home">
-        <h2>Strona Główna</h2>
-        <p>To jest przykładowa strona internetowa z prostym HTML i CSS.</p>
-    </section>
-    <section id="about">
-        <h2>O mnie</h2>
-        <p>.....</p>
-    </section>
-    <section id="contact">
-        <h2>strony</h2>
-        <a href="js.html"> strona z js</a>
-        <br>
-        <a href="zm.html"> zm</a><br>
-        <a href="inst-sterowania.html">instrukcje sterowania</a><br>
-        <a href="funkcjeee.html">funkcje</a><br>
-        <a href="Zdarzenia.html">zdarzenia</a><br>
-        <a href="obiekty.html">obiekty</a>
-    </section>
-    <footer>
-        <p>&copy; 2025 Moja Strona</p>
-    </footer>
+  <h1>Przykład funkcji strzałkowej (=>)</h1>
+
+  <input id="a" type="number" value="3"> +
+  <input id="b" type="number" value="5">
+  <button id="sumBtn">Oblicz</button>
+
+  <p id="result">Wynik: </p>
+
+  <script>
+    // funkcja strzałkowa (arrow function)
+    const dodaj = (x, y) => x + y;
+
+    document.getElementById("sumBtn").addEventListener("click", () => {
+      const a = Number(document.getElementById("a").value);
+      const b = Number(document.getElementById("b").value);
+      const wynik = dodaj(a, b);
+      document.getElementById("result").textContent = "Wynik: " + wynik;
+    });
+  </script>
 </body>
 </html>
