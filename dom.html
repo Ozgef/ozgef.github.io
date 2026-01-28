@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>DOM – przykłady</title>
+
+<style>
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    color: #2196f3;
+    text-align: center;
+}
+
+.example {
+    border: 2px solid #2196f3;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.title {
+    color: #2196f3;
+    font-weight: bold;
+}
+
+button {
+    background-color: #2196f3;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #64b5f6;
+}
+
+.active {
+    background: yellow;
+    color: black;
+}
+
+/* DOM – dom */
+.house {
+    width: 200px;
+    height: 140px;
+    background: #2196f3;
+    margin: 30px auto;
+    position: relative;
+}
+
+.roof {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid #64b5f6;
+    position: absolute;
+    top: -70px;
+}
+
+.window {
+    width: 40px;
+    height: 40px;
+    background: black;
+    position: absolute;
+    top: 40px;
+    left: 30px;
+}
+
+.window.right {
+    left: 130px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Document Object Model – przykłady</h1>
+
+<div class="example">
+<div class="title">1 – getElementById()</div>
+<p id="ex1">Tekst przykładowy</p>
+<button onclick="document.getElementById('ex1').innerText='Tekst zmieniony'">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">2 – querySelector()</div>
+<p id="qsResult"></p>
+<button onclick="
+document.querySelector('body').style.background='#111';
+qsResult.innerText='Zmieniono tło strony';
+">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">3 – querySelectorAll()</div>
+<p id="qsaResult"></p>
+<button onclick="
+let el=document.querySelectorAll('.example');
+el.forEach(e=>e.style.background='#111');
+qsaResult.innerText='Zmieniono '+el.length+' elementów';
+">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">4 – innerHTML</div>
+<button onclick="this.innerHTML='<b>Zmieniono HTML</b>'">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">5 – style</div>
+<button onclick="this.style.color='yellow'">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">6 – classList.add()</div>
+<button onclick="this.classList.add('active')">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">7 – classList.remove()</div>
+<button onclick="this.classList.remove('active')">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">8 – classList.toggle()</div>
+<button onclick="this.classList.toggle('active')">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">9 – createElement()</div>
+<button onclick="
+let p=document.createElement('p');
+p.innerText='Nowy element dodany';
+this.parentElement.appendChild(p);
+">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">10 – appendChild()</div>
+<button onclick="
+let hr=document.createElement('hr');
+document.body.appendChild(hr);
+">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">11 – remove()</div>
+<button onclick="this.parentElement.remove()">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">12 – addEventListener()</div>
+<p id="result12">Jeszcze nie kliknięto</p>
+<button id="btn12">Uruchom</button>
+</div>
+
+<div class="example">
+<div class="title">13 – setAttribute()</div>
+<p id="setAttr"></p>
+<button onclick="
+this.setAttribute('disabled','true');
+setAttr.innerText='Przycisk został zablokowany';
+">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">14 – getAttribute()</div>
+<p id="attrResult"></p>
+<button onclick="
+attrResult.innerText='disabled = '+this.getAttribute('disabled');
+">
+Uruchom
+</button>
+</div>
+
+<div class="example">
+<div class="title">15 – textContent</div>
+<button onclick="this.textContent='Gotowe'">
+Uruchom
+</button>
+</div>
+
+<h1>DOM – dom</h1>
+
+<div class="house" id="house">
+    <div class="roof"></div>
+    <div class="window"></div>
+    <div class="window right"></div>
+</div>
+
+<div style="text-align:center;">
+<button onclick="house.style.background='orange'">
+Zmień kolor domu
+</button>
+
+<button onclick="
+document.querySelectorAll('.window')
+.forEach(w=>w.style.background='yellow');
+">
+Zapal światła
+</button>
+</div>
+
+<script>
+document.getElementById("btn12").addEventListener("click", function(){
+    document.getElementById("result12").textContent =
+    "Kliknięto – addEventListener działa";
+});
+</script>
+
+</body>
+</html>
