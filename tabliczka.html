@@ -2,67 +2,58 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Tabliczka mnożenia</title>
+<title>Tablice wielowymiarowe</title>
 
 <style>
-body {
+body{
     font-family: Arial, sans-serif;
-    text-align: center;
-    background: #f5f5f5;
+    margin:0;
 }
 
-table {
-    border-collapse: collapse;
-    margin: 30px auto;
+.code-box{
+    background:#1e1e1e;
+    color:#00ff9c;
+    padding:20px;
+    font-family: monospace;
+    font-size:16px;
 }
 
-td, th {
-    border: 1px solid #333;
-    padding: 10px;
-    width: 50px;
-}
-
-th {
-    background: #ddd;
-}
-
-td {
-    background: white;
+.content{
+    padding:30px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<h1>Tabliczka mnożenia</h1>
+<div class="code-box">
+<pre><code>
+// Utworzenie dwuwymiarowej tablicy
+let table = new Array(10);
 
-<table id="tabliczka"></table>
-
-<script>
-const table = document.getElementById("tabliczka");
-
-for (let i = 0; i <= 10; i++) {
-    const row = document.createElement("tr");
-
-    for (let j = 0; j <= 10; j++) {
-        const cell = document.createElement(i === 0 || j === 0 ? "th" : "td");
-
-        if (i === 0 && j === 0) {
-            cell.textContent = "×";
-        } else if (i === 0) {
-            cell.textContent = j;
-        } else if (j === 0) {
-            cell.textContent = i;
-        } else {
-            cell.textContent = i * j;
-        }
-
-        row.appendChild(cell);
-    }
-
-    table.appendChild(row);
+for(let i = 0; i < table.length; i++){
+    table[i] = new Array(10);
 }
-</script>
+
+// Inicjowanie tablicy
+for(let row = 0; row < table.length; row++){
+    for(let col = 0; col < table[row].length; col++){
+        table[row][col] = row * col;
+    }
+}
+
+// Przykład użycia
+console.log(table[5][7]); // => 35
+</code></pre>
+</div>
+
+<div class="content">
+<h1>Tablice wielowymiarowe w JavaScript</h1>
+<p>
+Na górze strony znajduje się przykład kodu tworzącego dwuwymiarową tablicę.
+Kod tworzy tablicę 10x10 i wypełnia ją wynikiem mnożenia indeksów.
+</p>
+</div>
 
 </body>
 </html>
