@@ -2,58 +2,88 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Tablice wielowymiarowe</title>
+<title>Dynamiczna tabliczka mnożenia</title>
 
 <style>
 body{
-    font-family: Arial, sans-serif;
-    margin:0;
+    font-family: Arial;
+    text-align: center;
 }
 
-.code-box{
-    background:#1e1e1e;
-    color:#00ff9c;
-    padding:20px;
-    font-family: monospace;
-    font-size:16px;
+table{
+    border-collapse: collapse;
+    margin: 20px auto;
 }
 
-.content{
-    padding:30px;
+td, th{
+    border: 1px solid black;
+    padding: 8px;
+    width: 40px;
+}
+
+th{
+    background: #ddd;
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="code-box">
-<pre><code>
-// Utworzenie dwuwymiarowej tablicy
-let table = new Array(10);
+<h1>Tabliczka mnożenia</h1>
 
-for(let i = 0; i < table.length; i++){
-    table[i] = new Array(10);
-}
+<label>Do ilu liczb?</label>
+<input type="number" id="size" value="10" min="1">
+<button onclick="generate()">Generuj</button>
 
-// Inicjowanie tablicy
-for(let row = 0; row < table.length; row++){
-    for(let col = 0; col < table[row].length; col++){
-        table[row][col] = row * col;
+<br><br>
+
+<table id="table"></table>
+
+<script>
+function generate(){
+
+    const size = parseInt(document.getElementById("size").value);
+
+    // utworzenie tablicy 2D
+    let data = new Array(size);
+
+    for(let i = 0; i <= size; i++){
+        data[i] = new Array(size);
+    }
+
+    // inicjowanie tablicy
+    for(let row = 0; row <= size; row++){
+        for(let col = 0; col <= size; col++){
+            data[row][col] = row * col;
+        }
+    }
+
+    const table = document.getElementById("table");
+    table.innerHTML = "";
+
+    for(let i = 0; i <= size; i++){
+        const tr = document.createElement("tr");
+
+        for(let j = 0; j <= size; j++){
+            const cell = document.createElement(i === 0 || j === 0 ? "th" : "td");
+
+            if(i === 0 && j === 0){
+                cell.textContent = "×";
+            }else if(i === 0){
+                cell.textContent = j;
+            }else if(j === 0){
+                cell.textContent = i;
+            }else{
+                cell.textContent = data[i][j];
+            }
+
+            tr.appendChild(cell);
+        }
+
+        table.appendChild(tr);
     }
 }
-
-// Przykład użycia
-console.log(table[5][7]); // => 35
-</code></pre>
-</div>
-
-<div class="content">
-<h1>Tablice wielowymiarowe w JavaScript</h1>
-<p>
-Na górze strony znajduje się przykład kodu tworzącego dwuwymiarową tablicę.
-Kod tworzy tablicę 10x10 i wypełnia ją wynikiem mnożenia indeksów.
-</p>
-</div>
+</script>
 
 </body>
 </html>
