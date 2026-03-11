@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>bloki dom </h1>
+    <button id="addBtn">dodaj blok</button>
+    <div id="container"></div>
+    <script>
+
+
+const container = document.getElementById("container");
+const addBtn = document.getElementById("addBtn");
+
+let counter = 1;
+let dragged = null;
+
+// funkcja losowego koloru
+function randomColor(){
+  return `hsl(${Math.random()*360},70%,75%)`;
+}
+
+// przeciąganie
+function addDragEvents(element){
+
+  element.addEventListener("dragstart",()=>{
+    dragged = element;
+    element.style.opacity="0.5";
+  });
+
+  element.addEventListener("dragend",()=>{
+    element.style.opacity="1";
+  });
+
+  element.addEventListener("dragover",(e)=>{
+    e.preventDefault();
+  });
+
+  element.addEventListener("drop",(e)=>{
+    e.preventDefault();
+
+    if(dragged !== element){
+      const boxes=[...container.children];
+
+      const draggedIndex=boxes.indexOf(dragged);
+      const targetIndex=boxes.indexOf(element);
+
+      if(draggedIndex < targetIndex){
+        element.after(dragged);
+      }else{
+        element.before(dragged);
+      }
+    }
+
+  });
+
+}
+
+// tworzenie bloku
+function createBox(text){
+
+  const div=document.createElement("div");
+  div.className="box";
+  div.draggable=true;
+
+  div.style.backgroundColor=randomColor();
+
+  const span=document.createElement("span");
+  span.textContent=text;
+
+  const editBtn=document.createElement("button");
+  editBtn.textContent="Edytuj";
+
+  editBtn.onclick=()=>{
+    const newText=prompt("Nowy tekst:",span.textContent);
+    if(newText) span.textContent=newText;
+  };
+
+  const removeBtn=document.createElement("button");
+  removeBtn.textContent="Usuń";
+
+  removeBtn.onclick=()=>{
+    div.remove();
+  };
+
+  div.append(span,editBtn,removeBtn);
+
+  addDragEvents(div);
+
+  return div;
+}
+
+// dodawanie bloków
+addBtn.onclick=()=>{
+  container.appendChild(createBox("Blok "+counter++));
+};
+
+
+    </script>
+</body>
+</html>
