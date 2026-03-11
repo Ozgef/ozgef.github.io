@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Tablica asocjacyjna</title>
+<style>
+body{
+    font-family: Arial;
+    margin:40px;
+}
+input, button{
+    margin:5px;
+    padding:5px;
+}
+#wynik{
+    margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<h2>Tablica asocjacyjna - osoby</h2>
+
+<label>Imię:</label>
+<input type="text" id="imie">
+
+<label>Wiek:</label>
+<input type="number" id="wiek">
+
+<button onclick="dodaj()">Dodaj</button>
+<button onclick="pokaz()">Pokaż wszystkie</button>
+
+<div id="wynik"></div>
+
+<script>
+
+// tablica asocjacyjna (obiekt)
+let osoby = {};
+
+function dodaj(){
+    let imie = document.getElementById("imie").value;
+    let wiek = document.getElementById("wiek").value;
+
+    if(imie !== "" && wiek !== ""){
+        osoby[imie] = wiek; // klucz = imię, wartość = wiek
+        alert("Dodano osobę");
+    }
+}
+
+function pokaz(){
+    let tekst = "";
+
+    for(let klucz in osoby){
+        tekst += klucz + " ma " + osoby[klucz] + " lat<br>";
+    }
+
+    document.getElementById("wynik").innerHTML = tekst;
+}
+
+</script>
+
+</body>
+</html>
