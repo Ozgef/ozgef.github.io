@@ -1,0 +1,220 @@
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Tablice PHP i Sortowanie</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #1e272e, #2f3640);
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #00d4ff;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.card {
+    background: #353b48;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+code {
+    color: #ff7675;
+}
+
+pre {
+    background: #1e272e;
+    padding: 10px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background: #00a8ff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0097e6;
+}
+
+.output {
+    background: #1e272e;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📊 Tablice i Sortowanie w PHP</h1>
+
+<div class="container">
+
+<!-- SORTOWANIE JS -->
+<div class="card">
+<h2>Sortowanie (demo)</h2>
+<p id="array">[5,2,9,1,15,3]</p>
+
+<button onclick="sortAsc()">Rosnąco</button>
+<button onclick="sortDesc()">Malejąco</button>
+<button onclick="sortEven()">Parzyste najpierw</button>
+
+<div class="output" id="out"></div>
+</div>
+
+<!-- COUNT -->
+<div class="card">
+<h2>Funkcje tablic</h2>
+
+<ul>
+<li><code>count()</code> – liczy elementy</li>
+<li><code>sizeof()</code> – to samo co count</li>
+</ul>
+
+<pre>
+$tab = array("Alicja","Jolanta","Katarzyna","Małgorzata","Agnieszka");
+
+$d = count($tab);
+
+for($i=0;$i<$d;$i++){
+ echo $tab[$i];
+}
+</pre>
+</div>
+
+<!-- SORT -->
+<div class="card">
+<h2>Sortowanie tablic</h2>
+
+<pre>
+$tab=array("Alicja","Paulina","Katarzyna","Małgorzata");
+
+foreach($tab as $x){
+ echo $x;
+}
+
+sort($tab);
+</pre>
+
+<p><b>sort()</b> – sortuje rosnąco</p>
+</div>
+
+<!-- ASOCJACYJNE -->
+<div class="card">
+<h2>Tablice asocjacyjne</h2>
+
+<pre>
+$tab=array(
+"Alicja"=>"Kowalska",
+"Paulina"=>"Nowak",
+"Katarzyna"=>"Malinowska"
+);
+
+asort($tab); // po wartości
+ksort($tab); // po kluczu
+</pre>
+
+<ul>
+<li><code>sort()</code> – zwykłe sortowanie</li>
+<li><code>asort()</code> – po wartościach</li>
+<li><code>ksort()</code> – po kluczach</li>
+<li><code>arsort()</code> – malejąco wartości</li>
+<li><code>krsort()</code> – malejąco klucze</li>
+</ul>
+</div>
+
+<!-- PLIKI -->
+<div class="card">
+<h2>Operacje na plikach</h2>
+
+<ul>
+<li><code>readfile()</code> – czyta plik</li>
+<li><code>fopen()</code> – otwiera plik</li>
+<li><code>fread()</code> – czyta dane</li>
+<li><code>fgets()</code> – czyta linię</li>
+<li><code>fgetc()</code> – czyta znak</li>
+<li><code>feof()</code> – koniec pliku</li>
+<li><code>fwrite()</code> – zapis</li>
+<li><code>fclose()</code> – zamknięcie</li>
+<li><code>unlink()</code> – usuwa plik</li>
+</ul>
+
+<ul>
+<li><code>file_get_contents()</code></li>
+<li><code>file_put_contents()</code></li>
+<li><code>file_exists()</code></li>
+</ul>
+
+</div>
+
+<!-- DATA -->
+<div class="card">
+<h2>Funkcje daty i czasu</h2>
+
+<ul>
+<li><code>time()</code> – aktualny czas</li>
+<li><code>getdate()</code> – szczegóły daty</li>
+<li><code>date()</code> – formatowanie</li>
+<li><code>mktime()</code> – tworzenie daty</li>
+</ul>
+
+<pre>
+echo date("Y-m-d H:i:s");
+</pre>
+
+</div>
+
+</div>
+
+<script>
+let arr=[5,2,9,1,15,3];
+
+function update(){
+ document.getElementById("out").innerText=JSON.stringify(arr);
+}
+
+function sortAsc(){
+ arr.sort((a,b)=>a-b);
+ update();
+}
+
+function sortDesc(){
+ arr.sort((a,b)=>b-a);
+ update();
+}
+
+function sortEven(){
+ arr.sort((a,b)=>{
+  if(a%2===0 && b%2!==0) return -1;
+  if(a%2!==0 && b%2===0) return 1;
+  return a-b;
+ });
+ update();
+}
+</script>
+
+</body>
+</html>
+```
