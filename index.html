@@ -1,9 +1,9 @@
-```html id="przyklady123"
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Przykłady PHP – Tablice i Funkcje</title>
+<title>Działające przykłady</title>
 
 <style>
 body {
@@ -20,181 +20,138 @@ h1 {
 
 .card {
     background: #2f3640;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 12px;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
 }
 
-pre {
-    background: #000;
-    padding: 10px;
-    border-radius: 8px;
-    color: #0fbcf9;
+button {
+    padding: 8px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #00a8ff;
+    color: white;
+    cursor: pointer;
 }
 
 .result {
-    background: #1e272e;
-    padding: 10px;
     margin-top: 10px;
-    border-left: 4px solid #00a8ff;
+    background: #000;
+    padding: 10px;
+    border-radius: 6px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>📊 Przykłady działania funkcji</h1>
+<h1>📊 Działające przykłady</h1>
 
 <!-- COUNT -->
 <div class="card">
 <h2>count()</h2>
-
-<pre>
-$tab = ["Ala","Ola","Ela"];
-echo count($tab);
-</pre>
-
-<div class="result">Wynik: 3</div>
+<p>Tablica: ["Ala","Ola","Ela"]</p>
+<button onclick="countFunc()">Pokaż wynik</button>
+<div class="result" id="count"></div>
 </div>
 
 <!-- SORT -->
 <div class="card">
 <h2>sort()</h2>
-
-<pre>
-$tab = [5,2,9,1];
-sort($tab);
-print_r($tab);
-</pre>
-
-<div class="result">Wynik: [1,2,5,9]</div>
+<p>Tablica: [5,2,9,1]</p>
+<button onclick="sortFunc()">Sortuj rosnąco</button>
+<div class="result" id="sort"></div>
 </div>
 
 <!-- RSORT -->
 <div class="card">
 <h2>rsort()</h2>
-
-<pre>
-$tab = [5,2,9,1];
-rsort($tab);
-print_r($tab);
-</pre>
-
-<div class="result">Wynik: [9,5,2,1]</div>
+<p>Tablica: [5,2,9,1]</p>
+<button onclick="rsortFunc()">Sortuj malejąco</button>
+<div class="result" id="rsort"></div>
 </div>
 
 <!-- ASORT -->
 <div class="card">
 <h2>asort()</h2>
-
-<pre>
-$tab = ["a"=>5,"b"=>2,"c"=>9];
-asort($tab);
-print_r($tab);
-</pre>
-
-<div class="result">Wynik: b=2, a=5, c=9</div>
+<p>Tablica: {a:5, b:2, c:9}</p>
+<button onclick="asortFunc()">Sortuj po wartości</button>
+<div class="result" id="asort"></div>
 </div>
 
 <!-- KSORT -->
 <div class="card">
 <h2>ksort()</h2>
-
-<pre>
-$tab = ["c"=>5,"a"=>2,"b"=>9];
-ksort($tab);
-print_r($tab);
-</pre>
-
-<div class="result">Wynik: a=2, b=9, c=5</div>
-</div>
-
-<!-- FILE GET -->
-<div class="card">
-<h2>file_get_contents()</h2>
-
-<pre>
-$tekst = file_get_contents("plik.txt");
-echo $tekst;
-</pre>
-
-<div class="result">Wynik: zawartość pliku</div>
-</div>
-
-<!-- FILE PUT -->
-<div class="card">
-<h2>file_put_contents()</h2>
-
-<pre>
-file_put_contents("plik.txt", "Hello");
-</pre>
-
-<div class="result">Wynik: zapisano "Hello" do pliku</div>
+<p>Tablica: {c:5, a:2, b:9}</p>
+<button onclick="ksortFunc()">Sortuj po kluczu</button>
+<div class="result" id="ksort"></div>
 </div>
 
 <!-- FILE EXISTS -->
 <div class="card">
 <h2>file_exists()</h2>
-
-<pre>
-if(file_exists("plik.txt")){
- echo "Istnieje";
-}
-</pre>
-
-<div class="result">Wynik: Istnieje</div>
-</div>
-
-<!-- UNLINK -->
-<div class="card">
-<h2>unlink()</h2>
-
-<pre>
-unlink("plik.txt");
-</pre>
-
-<div class="result">Wynik: plik usunięty</div>
-</div>
-
-<!-- TIME -->
-<div class="card">
-<h2>time()</h2>
-
-<pre>
-echo time();
-</pre>
-
-<div class="result">Wynik: np. 1712580000</div>
+<button onclick="fileExists()">Sprawdź plik</button>
+<div class="result" id="file"></div>
 </div>
 
 <!-- DATE -->
 <div class="card">
 <h2>date()</h2>
-
-<pre>
-echo date("Y-m-d");
-</pre>
-
-<div class="result">Wynik: 2026-04-08</div>
-</div>
-
-<!-- JS DEMO -->
-<div class="card">
-<h2>👉 Demo (działa naprawdę)</h2>
-
-<button onclick="demoSort()">Sortuj [5,2,9,1]</button>
-<div class="result" id="demo"></div>
-
+<button onclick="showDate()">Pokaż datę</button>
+<div class="result" id="date"></div>
 </div>
 
 <script>
-function demoSort(){
+
+// COUNT
+function countFunc(){
+ let tab=["Ala","Ola","Ela"];
+ document.getElementById("count").innerText = tab.length;
+}
+
+// SORT
+function sortFunc(){
  let tab=[5,2,9,1];
  tab.sort((a,b)=>a-b);
- document.getElementById("demo").innerText=tab;
+ document.getElementById("sort").innerText = tab;
 }
+
+// RSORT
+function rsortFunc(){
+ let tab=[5,2,9,1];
+ tab.sort((a,b)=>b-a);
+ document.getElementById("rsort").innerText = tab;
+}
+
+// ASORT (po wartości)
+function asortFunc(){
+ let tab={a:5,b:2,c:9};
+ let sorted = Object.entries(tab).sort((a,b)=>a[1]-b[1]);
+ document.getElementById("asort").innerText = JSON.stringify(sorted);
+}
+
+// KSORT (po kluczu)
+function ksortFunc(){
+ let tab={c:5,a:2,b:9};
+ let sorted = Object.entries(tab).sort();
+ document.getElementById("ksort").innerText = JSON.stringify(sorted);
+}
+
+// FILE EXISTS (symulacja)
+function fileExists(){
+ document.getElementById("file").innerText = "plik.txt istnieje (symulacja)";
+}
+
+// DATE
+function showDate(){
+ let d = new Date();
+ document.getElementById("date").innerText = d.toLocaleString();
+}
+
 </script>
 
 </body>
 </html>
 ```
+
